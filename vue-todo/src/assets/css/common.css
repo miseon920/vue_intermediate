@@ -1,0 +1,120 @@
+/* 공통 style */
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    text-align: center;
+    background: #f6f6f6;
+}
+input {
+    border-style: groove;
+    width: 200px;
+}
+button {
+    border-style: groove;
+}
+.shadow {
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
+}
+input:focus,
+button:focus {
+    outline: none;
+}
+#app {
+    padding: 0 10px;
+    max-width:720px;
+    margin:0 auto;
+}
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+/* input style */
+.inputBox {
+    background: #fff;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+}
+.inputBox input {
+    border-style: none;
+    font-size: 0.9rem;
+    width: calc(100% - calc(3rem + 30px));
+    padding: 0 15px;
+}
+.addContainer {
+    float: right;
+    background: linear-gradient(to right, #6478fb, #8763fb);
+    display: block;
+    width: 3rem;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.addBtn {
+    color: #fff;
+    vertical-align: middle;
+}
+
+/* list style */
+.listBox ul {
+    text-align: left;
+}
+.listBox li {
+    display: flex;
+    align-items:center;    
+    min-height: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0.5rem 0;
+    padding: 0 0.9rem;
+    background: #fff;
+    border-radius: 5px;
+}
+.removeBtn {
+    margin-left:15px;
+    color: #de4343;
+}
+.removeBtn i{
+    cursor: pointer;
+}
+.checkBtn {
+    line-height: 45px;
+    color: #62acde;
+    margin-right: 5px;
+}
+.checkBtnCompleted {
+    color: #b3adad;
+}
+.textCompleted {
+    text-decoration: line-through;
+    color: #b3adad;
+}
+#check{
+    display:none;
+}
+/* footer */
+
+.clearAllContainer{
+    width:8.5rem;
+    height:50px;
+    line-height:50px;
+    background:#fff;
+    border-radius: 5px;
+    margin:15px auto 0;
+}
+.clearAllBtn{
+    color:#e20303;
+    display:block;
+}
+.date{
+    margin-left: auto;
+    font-size:0.8em;
+    color:#666;
+}
