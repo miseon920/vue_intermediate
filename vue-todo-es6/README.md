@@ -62,7 +62,47 @@
 
         a.push(30); //[30]
 
+    ## 화살표함수 = arrow Function
+
+    - 함수를 정의할때 function키워드를 => 로 대체
+    - 콜백함수의 문법 간결화
+
+    > var sum = function(){
+        // es5
+    }
+
+    > var sum = () => {
+        // es6
+    }
+
+    - function이 () 뒤에 => 로 변경됨
+    - 화살표 함수 내에서 this는 상위 스코프의 this로 바인딩 된다
+    - addEventListener을 사용할 경우는 화살표 함수 보다는 일반함수를 사용한다. (이때 일반 함수의 this는 currentTarget)
+
+     <https://joshua1988.github.io/vue-camp/es6+/fat-arrow.html#%E1%84%80%E1%85%B5%E1%84%8C%E1%85%A9%E1%86%AB%E1%84%8B%E1%85%B4-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%89%E1%85%B5%E1%86%A8>
         
 
+    - 향상된 객체 리터럴 
+        1. 객체의 속성의 메서드로 사용할 때 function 예약어를 생략하고 생성가능
 
-        
+            - lookup: function(){}  = es5
+
+            - lookup(){}  = es6
+            
+        2. 객체의 속성명과 값 명이 동일할 때 축약가능(대표적인 예시로 컴포넌트)
+
+            var a = 10;
+            var dic = {
+                // a: a, = 속성과 값이 같음
+                a,
+            }
+
+    - Modules(자바스크립트 모듈화 방법) : 파일별로 scope를 만듬
+        1. 자바스크립트 모듈 로더 라이브러리 (AMD, Common Js) 기능을 js 언어 자체에서 지원
+        2. 호출(**import**)되기 전까진 코드 실행과 동작을 하지 않는 특징이 있음
+
+        > import
+
+        > export - default를 쓰는 이유는 한 파일에서 1개만 export 할 수 있다는 의미
+
+            

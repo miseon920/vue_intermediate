@@ -21,12 +21,12 @@ import "./assets/css/common.css"; //외부스타일 사용법
 
 export default {
     components: {
-        TodoHeader,
+        TodoHeader, //TodoHeader : TodoHeader = 값과 속성이 같으므로 축약하여 쓸수 있음
         TodoInput,
         TodoList,
         TodoFooter,
     },
-    data: function () {
+    data() {
         return {
             todoItems: [],
             trueNum: 0,
@@ -34,20 +34,20 @@ export default {
         };
     },
     methods: {
-        addOneItem: function (item) {
+        addOneItem(item) { //속성메서드 이므로 : function 제거가능
             //인자로 1개를 보냈기 때문에 매개변수도 맞춰서 만들어줌
             //input에서 추가하는 부분 가져오기
-            let obj = { completed: false, value: item };
+            const obj = { completed: false, value: item }; //const를 쓰면 재선언할 수 없어 디버깅할 때 충돌을 줄일 수 있음
             //오브젝트로 만들어줬기 때문에 obj를 찍게 되면 object object가 찍힘, 따라서 문자열로 변환해 주는것
             //localStorage.setItem(this.newTodoItem,obj);
             localStorage.setItem(item.item, JSON.stringify(obj)); //JavaScript 값이나 객체를 JSON 문자열로 변환
             this.todoItems.unshift(obj);
         },
-        removeOneItem: function (todoItem, index) {
+        removeOneItem(todoItem, index) {
             localStorage.removeItem(todoItem.value.item); //객체일때 로컬스트리지에서 삭제하기
             this.todoItems.splice(index, 1); //현재 리스트에서 삭제하기
         },
-        toggleOneItem: function (todoItem, index) {
+        toggleOneItem(todoItem, index) {
             //todoItem.completed = !todoItem.completed; //이벤트로 넘어온값을 바꾸는 것을 안티패턴이라고 하며 어짜피 props로 내려준 값이 변경되므로 아래와같이 변경한것
             this.todoItems[index].completed = !this.todoItems[index].completed;
             //localStorage 갱신하기
@@ -55,7 +55,7 @@ export default {
             localStorage.setItem(todoItem.value.item, JSON.stringify(todoItem)); //새로 추가해준다, 이때 completed 값이 바꼈으므로 바뀐값이 들어오게 된다.
             this.sortTodoOldest();
         },
-        clearAllItems: function () {
+        clearAllItems() {
             localStorage.clear();
             this.todoItems = [];
         },
@@ -87,7 +87,7 @@ export default {
             this.totalNum = this.todoItems.length;
         },
     },
-    created: function () {
+    created() {
         /**
          * created : data를 반응형으로 추적할 수 있게 되며 computed, methods, watch 등이 활성화되어
          * 접근이 가능하게 됩니다. 하지만 아직까지 DOM에는 추가되지 않은 상태입니다.
@@ -97,7 +97,7 @@ export default {
          */
         if (localStorage.length > 0) {
             //로컬스트로지에 데이터가 있을시
-            for (var i = 0; i < localStorage.length; i++) {
+            for (let i = 0; i < localStorage.length; i++) { //반복문은 계속 값이 바뀌므로 let을 씀
                 if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
                     //웹팩이 있을때는 제외, 웹팩을 포함한 cli를 설치했을때
                     //this.todoItems.push(localStorage.key(i)); //배열에 담기

@@ -36,11 +36,11 @@
 export default {
     props: ["propsdata"],
     methods: {
-        removeTodo: function (todoItem, index) {
+        removeTodo(todoItem, index) {
             this.$emit("removeItem", todoItem, index);
             //localStorage.removeItem(todoItem); //로컬스트리지에서 삭제하기
         },
-        toggleComplete: function (todoItem, index) {
+        toggleComplete(todoItem, index) {
             this.$emit("toggleItem", todoItem, index);
         },
     },

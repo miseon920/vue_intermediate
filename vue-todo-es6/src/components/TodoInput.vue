@@ -33,14 +33,14 @@ export default {
     components: {
         Modal,
     },
-    data: function () {
+    data() {
         return {
             newTodoItem: "",
             showModal: false,
         };
     },
     methods: {
-        addToDO: function () {
+        addToDO() {
             if (this.newTodoItem !== "") {
                 //console.log(this.newTodoItem);
                 //저장하는로직 - 로컬스트로지에 저장하기
@@ -61,7 +61,7 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput: function () {
+        clearInput() {
             this.newTodoItem = "";
         },
     },
