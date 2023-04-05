@@ -43,7 +43,11 @@
 컴포넌트 -> 비동기로직 -> 동기로직 -> 상태
 
 **자바스크립트 비동기 처리와 콜백 함수, Promise 쉽게 이해하기**
+
 <https://msweb.tistory.com/115>
 
 
 ## Vue 설치하기 : npm i vuex@3.6.2
+- 가이드 확인 후 버전에 맞게 설치하기
+
+<https://v2.vuejs.org/v2/guide/installation.html#CDN>
