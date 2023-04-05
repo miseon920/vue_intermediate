@@ -1,52 +1,49 @@
-#뷰 중급과정
+# Vuex - 상태관리 라이브러리
 
-1.npm install -g @vue/cli (해당프로젝트는 vue2)
+1. 컴포넌트를 효율적으로 관리하는 라이브러리
+2. 등장배경 Flux
+3. 주요속성 : state, getters, mutations, actions 🙌
+	state = data
+	getters = computed
+	mutations = method
+	actions = 비동기 메서드
 
-2.vue create 프로젝트명
-
-3.
- $ cd vue-todo
- $ npm run serve
-
-4.컴포넌트 만들기 - 파스칼케이스법으로 작성 - 첫단어는 대문자로 시작
-
-5.컴포넌트 등록하기 - App.vue
-
-6.public - index.html 에 뷰포트, 파피콘 등 메타태그와 필요한 font, icon 등록하기 - cdn 이용
-
- 1 : https://www.favicon-generator.org/ - 파비콘만들기
- 
- 2 : https://fonts.google.com/ - 구글 웹폰트(요즘은 눈누도 많이씀!)
- 
- 3 : https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag - 뷰포트(반응형을 위해서 사용)
- 
-7.작업이 완료 되어도 리액티비티가 일어나지 않아 리스트가 바로바로 갱신되지 않는 문제가 생김
-
-8.App.vue을 중심을 데이터 문제를 해결(이벤트, props 이용)
+4. Vuex를 더 쉽게 코딩할수 있는 방법인 Helper 기능
+5. 프로젝트를 구조화하는 방법과 모듈 구조화 방법
 
 
-😊추가작업
-1) 날짜 추가, getTime()으로 로컬스트리지를 정렬했음
-    1970년 1월 1일 자정을 기준으로 현재시간을 숫자로 나열한것
+## Vuex
+- 컴포넌트의 데이터를 관리하기 위한 상태 관리 패턴이자 라이브러리
+- react의 flux 패턴에서 기인함
 
-2) 작업을 완료했을경우 아래로 내리고 최신글이 위로오게 sort 작업
-    -이부분은 완료 유무로 filter로 작업한 후 sort하여 합침
-    
-3) todo 갯수와 완료된 갯수 = data로 작업후 props로 내렸음
-    sort 작업에서 모두 완료 처리가 될거같아서 vue 생명주기인 beforeUpdate 시에 호출함
+1. flux : mvc 패턴의 복작합 테이터의 흐름 문제를 해결하는 개발 패턴(**단방향 데이터 흐름** = 리액트에서는 flux패턴으로 상태관리를 하는 라이브러리는 리덕스)
+> mvc : **모델-뷰-컨트롤러** = 사용자 인터페이스, 데이터 및 논리 제어를 구현하는데 널리 사용되는 소프트웨어 디자인 패턴(모델과 뷰가 데이터를 주고받는 양방향 데이터 흐름)
+    > 기능 추가 및 변경에 따른 문제점을 예측을 할 수 없는 문제점이 발생함
 
-9.사용자 경험 개선
+  1. action : 화면에서 발생하는 이벤트 또는 사용자 입력
+  2. dispatcher : 데이터를 변경하는 방법, 메서드
+  3. model(store) : 화면에 표시할 데이터 (데이터를 담는곳 = 자바스크립트 객체와 같은 의미)
+  4. view : 사용자에게 비춰지는 화면 (DOM)
 
-1: https://vuejs.org/examples/#modal - 뷰에서 제공하는 modal
+## Vuex가 필요한 이유
+- 컴포넌트의 갯수가 많아질 경우 컴포넌트 간에 데이터 전달이 어려워짐
+- 이벤트 버스로 해결할 경우 어디서 이벤트를 보냈는지 받았는지 알기가 어려움
 
-    - slot : slot을 사용하면 등록한 컴포넌트에서 재정의가 가능 (컴포넌트 안에서 ui부분을 재사용하기 위해서 조각낸 부분이라고 이해하면 쉬움)
-    - slot name="body 하고 등록한 후 그안에 들어가는 내용은 디폴트내용이 된다
-    - import하여 사용하는 부분에서는 template #slot네임 으로 쓰던지 v-slot:솔트네임으로 사용한다. 
-      그안에 들어가는 내용은 본인이 작업하는 ui에 맞게 변경가능하다(태그도, 텍스트, 이미지 무엇이든지 가능). 안쓰게 되면 최초 등록한 디폴트 내용이 나오게 된다.
+    *해결할 수 있는 문제
+    1. mvc 패턴에서 발생하는 구조적 오류
+    2. 컴포넌트간의 데이터 전달 명시
+    3. 여러개의 컴포넌트에서 같은 데이터를 업데이트 할때 동기화 문제
 
-2: https://v2.vuejs.org/v2/guide/transitions.html#Transition-Classes - 뷰에서 제공하는 트랜지션 
+## Vuex 컨셉(단방향 데이터 흐름)
+- State : 컴포넌트 간에 공유하는 데이터 data()
+- view : 데이터를 표시하는 화면 template
+- Action : 사용자의 입력에 따라 데이터를 변경하는 methods
 
-    -TransitionGroup은 리스트를 표현할때 사용
-     tag로  ul을 써주면 된다.
-    - 단일로 쓸경우에는 transition 를 쓰고 name을 설정하고 사용
-    
+## Vuex 구조
+컴포넌트 -> 비동기로직 -> 동기로직 -> 상태
+
+**자바스크립트 비동기 처리와 콜백 함수, Promise 쉽게 이해하기**
+<https://msweb.tistory.com/115>
+
+
+## Vue 설치하기 : npm i vuex@3.6.2
