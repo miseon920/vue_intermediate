@@ -3,8 +3,8 @@
         <TransitionGroup tag="ul" name="list">
             <!--리스트에 애니메이션을 줄때 -->
             <li
-                v-for="(todoItem, index) in propsdata"
-                :key="todoItem.value.item"
+                v-for="(todoItem, index) in this.$store.state.todoItems"
+                :key="todoItem.value.time"
                 class="shadow"
             >
                 <label
@@ -34,14 +34,20 @@
 
 <script>
 export default {
-    props: ["propsdata"],
+    // props: ["propsdata"], //store에 있으므로 삭제
     methods: {
         removeTodo(todoItem, index) {
-            this.$emit("removeItem", todoItem, index);
+            //this.$emit("removeItem", todoItem, index);
             //localStorage.removeItem(todoItem); //로컬스트리지에서 삭제하기
+            // const obj = {
+            //     todoItem: todoItem,
+            //     index: index,
+            // };
+            this.$store.commit("removeOneItem", { todoItem, index }); //{ todoItem, index }는 obj와 같음 - 향상된 객체 리터럴방식
         },
         toggleComplete(todoItem, index) {
-            this.$emit("toggleItem", todoItem, index);
+            //this.$emit("toggleItem", todoItem, index);
+            this.$store.commit("toggleOneItem", { todoItem, index }); //{ todoItem, index }는 obj와 같음 - 향상된 객체 리터럴방식
         },
     },
 };
@@ -66,11 +72,11 @@ export default {
     opacity: 0;
     transform: translateY(-30px);
 }
-.list-leave-to{
-      transform: translateY(30px);  
+.list-leave-to {
+    transform: translateY(30px);
 }
 
-.listBox ul{
+.listBox ul {
     position: relative;
 }
 

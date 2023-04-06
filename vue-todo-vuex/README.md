@@ -3,10 +3,10 @@
 1. 컴포넌트를 효율적으로 관리하는 라이브러리
 2. 등장배경 Flux
 3. 주요속성 : state, getters, mutations, actions 🙌
-	state = data
-	getters = computed
-	mutations = method
-	actions = 비동기 메서드
+	state = data : 컴포넌트 간에 공유하는 데이터 또는 상태
+	getters = computed : 연산된 state 값을 접근하는 속성 / 캐싱하는 속성도 있음
+	mutations = method : state값을 변경하는 이벤트 로직, 메서드 / 인자가 있다면 getters보다 muations 사용을 권장
+	actions = 비동기 메서드 : 비동기 처리 로직을 선언하는 메서드 aysnc methods
 
 4. Vuex를 더 쉽게 코딩할수 있는 방법인 Helper 기능
 5. 프로젝트를 구조화하는 방법과 모듈 구조화 방법
