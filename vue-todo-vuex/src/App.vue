@@ -22,6 +22,7 @@ export default {
         TodoList,
         TodoFooter,
     },
+    
     methods: {
         // sortTodoOldest() {
         //     let sortItem = [];
@@ -75,11 +76,5 @@ export default {
     //         //로컬스트로지는 for문을 활용하여 불러올때 순서가 보장되지 않는다
     //     }
     // },
-    // mounted() {
-    //     this.sortTodoOldest();
-    // },
-    // beforeUpdate(){ //컴포넌트가 데이터가 변하여 업데이트 시작될 때 실행
-    //     this.sortTodoOldest();
-    // }
 };
 </script>

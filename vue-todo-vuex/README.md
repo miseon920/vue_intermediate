@@ -6,7 +6,9 @@
 	state = data : 컴포넌트 간에 공유하는 데이터 또는 상태
 	getters = computed : 연산된 state 값을 접근하는 속성 / 캐싱하는 속성도 있음
 	mutations = method : state값을 변경하는 이벤트 로직, 메서드 / 인자가 있다면 getters보다 muations 사용을 권장
-	actions = 비동기 메서드 : 비동기 처리 로직을 선언하는 메서드 aysnc methods
+    > state를 직접변경하지 않고 뮤테이션을 변경하는 이유 : state를 직접변경하면 어느 컴포넌트에서 해당 state를 변경했는지 추적하기 어렵기 때문에 commit을 이용하여 뮤테이션을 변경함(반응성, 디버깅, 테스팅혜택)
+	actions = 비동기 메서드 : 비동기 처리 로직을 선언하는 메서드 aysnc methods(데이터 요청, Primise, async과 같은 비동기 처리를 모두 선언, state를 변경할 수 없음)
+    > 어느컴포넌트에서 state를 호출하고 변경했는지 확인이 어렵기 때문에 비동기 로직은 actions에 선언함
 
 4. Vuex를 더 쉽게 코딩할수 있는 방법인 Helper 기능
 5. 프로젝트를 구조화하는 방법과 모듈 구조화 방법
