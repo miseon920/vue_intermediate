@@ -62,3 +62,21 @@
 4. actions -> mapActions
 
 > vuex에 있는 헬퍼를 로딩
+
+## 헬퍼함수 컴포넌트에 연결하기
+<pre>
+    import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+
+    export default {
+        computed: {
+            ...mapState(),
+            ...mapGetters()
+        },
+        methods: {
+            ...mapMutations(),
+            ...mapActions(),
+        }
+    }
+</pre>
+
+## store 모듈화
