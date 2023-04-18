@@ -32,7 +32,7 @@ const storage = {
                 if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
                     const item = localStorage.getItem(localStorage.key(i));
                     arr.push(JSON.parse(item)); //arr배열을 만들어서 푸시해주기
-                    console.log(arr);
+                    //console.log(arr);
                     sortlist(arr);
                 }
             }

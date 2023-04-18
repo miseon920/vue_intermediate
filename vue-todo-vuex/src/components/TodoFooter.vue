@@ -5,13 +5,18 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex"; //헬퍼함수 사용하기
+
 export default {
     methods: {
-        clearTodo() {
-            //localStorage.clear();
-            //this.$emit("clearAll");
-            this.$store.commit("clearAllItems");
-        },
+        // clearTodo() {
+        //     //localStorage.clear();
+        //     //this.$emit("clearAll");
+        //     this.$store.commit("clearAllItems");
+        // },
+         ...mapMutations({
+            clearTodo : 'clearAllItems'
+        }),
     },
 };
 </script>

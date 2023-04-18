@@ -55,3 +55,10 @@
 <https://v2.vuejs.org/v2/guide/installation.html#CDN>
 
 
+## Helper함수(헬퍼)
+1. state -> mapState
+2. getters -> mapGetters
+3. mutations -> mapMutations
+4. actions -> mapActions
+
+> vuex에 있는 헬퍼를 로딩

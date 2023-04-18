@@ -9,7 +9,7 @@
             >
                 <label
                     for="check"
-                    @click="toggleComplete({todoItem, index})"
+                    @click="toggleComplete(todoItem, index)"
                     class="checkBtn"
                     :class="{ textCompleted: todoItem.completed }"
                     ><i class="fas fa-solid fa-check"></i
@@ -24,8 +24,7 @@
                         `${todoItem.value.year}년 ${todoItem.value.month}월 ${todoItem.value.date}일`
                     }}
                 </span>
-                <span class="removeBtn" @click="removeTodo({todoItem, index})">
-                    <!-- -->
+                <span class="removeBtn" @click="removeTodo(todoItem, index)">
                     <i class="fas fa-sharp fa-regular fa-trash"></i>
                 </span>
             </li>
@@ -34,29 +33,22 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex"; //헬퍼함수 사용하기
-
 export default {
     // props: ["propsdata"], //store에 있으므로 삭제
     methods: {
-
-        ...mapMutations({
-            removeTodo : 'removeOneItem',
-            toggleComplete : 'toggleOneItem'
-        }),
-        // removeTodo(todoItem, index) {
-        //     //this.$emit("removeItem", todoItem, index);
-        //     //localStorage.removeItem(todoItem); //로컬스트리지에서 삭제하기
-        //     // const obj = {
-        //     //     todoItem: todoItem,
-        //     //     index: index,
-        //     // };
-        //     this.$store.commit("removeOneItem", { todoItem, index }); //{ todoItem, index }는 obj와 같음 - 향상된 객체 리터럴방식
-        // },
-        // toggleComplete(todoItem, index) {
-        //     //this.$emit("toggleItem", todoItem, index);
-        //     this.$store.commit("toggleOneItem", { todoItem, index }); //{ todoItem, index }는 obj와 같음 - 향상된 객체 리터럴방식
-        // },
+        removeTodo(todoItem, index) {
+            //this.$emit("removeItem", todoItem, index);
+            //localStorage.removeItem(todoItem); //로컬스트리지에서 삭제하기
+            // const obj = {
+            //     todoItem: todoItem,
+            //     index: index,
+            // };
+            this.$store.commit("removeOneItem", { todoItem, index }); //{ todoItem, index }는 obj와 같음 - 향상된 객체 리터럴방식
+        },
+        toggleComplete(todoItem, index) {
+            //this.$emit("toggleItem", todoItem, index);
+            this.$store.commit("toggleOneItem", { todoItem, index }); //{ todoItem, index }는 obj와 같음 - 향상된 객체 리터럴방식
+        },
     },
 };
 </script>
