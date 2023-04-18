@@ -53,7 +53,8 @@ export default {
                     time: getDate().time,
                 };
                 //this.$emit("addTodoItem", value); //현재 추가된값을 addOneItem이벤트 이름으로 상위로 보내는것
-                this.$store.commit("addOneItem", value);
+                //this.$store.commit("addOneItem", value);
+                this.$store.commit("todoApp/addOneItem", value)
                 this.clearInput(); //비우기
             } else {
                 //alert("할일을 입력 해 주세요");
