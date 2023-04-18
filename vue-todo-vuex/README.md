@@ -80,3 +80,20 @@
 </pre>
 
 ## store 모듈화
+
+1. getters와 mutations 를 분리
+2. export 후 store에 import
+3. 하나의 store로 관리하기 힘들경우 modules 속성 사용
+ >  modules/store이름
+ 
+ <pre>
+    export const store = new Vuex.Store({
+        modules: {
+            모듈명칭 : 모듈 파일명
+        },
+    });
+ </pre>
+
+ - 모듈별로 분리할 경우 namespaced: true 옵션을 넣고 호출시 모듈명을 앞에 넣으면 됨
+    - 모듈 export 시 namespaced: true 옵션넣기
+    - 각컴포넌트에서 헬퍼함수 사용시 "모듈명" 추가하기

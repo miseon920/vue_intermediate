@@ -14,7 +14,7 @@ export default {
         //     //this.$emit("clearAll");
         //     this.$store.commit("clearAllItems");
         // },
-         ...mapMutations({
+         ...mapMutations("todoApp",{
             clearTodo : 'clearAllItems'
         }),
     },

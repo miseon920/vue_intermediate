@@ -3,13 +3,13 @@
         <TransitionGroup tag="ul" name="list">
             <!--리스트에 애니메이션을 줄때 -->
             <li
-                v-for="(todoItem, index) in this.$store.state.todoItems"
+                v-for="(todoItem, index) in todoItems"
                 :key="todoItem.value.time"
                 class="shadow"
             >
                 <label
                     for="check"
-                    @click="toggleComplete({todoItem, index})"
+                    @click="toggleComplete({ todoItem, index })"
                     class="checkBtn"
                     :class="{ textCompleted: todoItem.completed }"
                     ><i class="fas fa-solid fa-check"></i
@@ -24,7 +24,10 @@
                         `${todoItem.value.year}년 ${todoItem.value.month}월 ${todoItem.value.date}일`
                     }}
                 </span>
-                <span class="removeBtn" @click="removeTodo({todoItem, index})">
+                <span
+                    class="removeBtn"
+                    @click="removeTodo({ todoItem, index })"
+                >
                     <!-- -->
                     <i class="fas fa-sharp fa-regular fa-trash"></i>
                 </span>
@@ -34,15 +37,17 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex"; //헬퍼함수 사용하기
+import { mapMutations, mapGetters } from "vuex"; //헬퍼함수 사용하기
 
 export default {
     // props: ["propsdata"], //store에 있으므로 삭제
+    computed: {
+        ...mapGetters("todoApp",["todoItems"]),
+    },
     methods: {
-
-        ...mapMutations({
-            removeTodo : 'removeOneItem',
-            toggleComplete : 'toggleOneItem'
+        ...mapMutations("todoApp",{
+            removeTodo: "removeOneItem",
+            toggleComplete: "toggleOneItem",
         }),
         // removeTodo(todoItem, index) {
         //     //this.$emit("removeItem", todoItem, index);
